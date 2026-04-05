@@ -721,7 +721,7 @@
          INIT
          ══════════════════════════════════════════════════════ */
       async function init() {
-        const resp = await fetch("./data/map-data.json");
+        const resp = await fetch("./archive/map-data.json");
         DATA = await resp.json();
 
         document.getElementById("header-sub").textContent =
@@ -830,7 +830,7 @@
               const parts = [];
               if (b.address) parts.push(b.address);
               if (b.floors) parts.push(`${b.floors} קומות`);
-              if (b.year) parts.push(b.year);
+              if (b.year) parts.push(String(b.year));
               if (parts.length > 0) {
                 layer.bindTooltip(parts.join(" | "), {
                   sticky: true,
@@ -1400,4 +1400,3 @@
     </script>
   </body>
 </html>
-
