@@ -721,7 +721,7 @@
          INIT
          ══════════════════════════════════════════════════════ */
       async function init() {
-        const resp = await fetch("./archive/map-data.json");
+        const resp = await fetch("./data/map-data.json");
         DATA = await resp.json();
 
         document.getElementById("header-sub").textContent =
@@ -1400,3 +1400,4 @@
     </script>
   </body>
 </html>
+
