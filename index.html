@@ -1,0 +1,1402 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ארכיון בלוק תשבי-ששון | מפת מחקר</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        direction: rtl;
+        overflow: hidden;
+        color: #e2e8f0;
+        font-size: 13px;
+      }
+      #app {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      /* ── Side Panel ──────────────────────────────────────── */
+      #side-panel {
+        width: 34%;
+        min-width: 340px;
+        max-width: 480px;
+        background: #1a1a2e;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1000;
+        border-left: 1px solid #2d2d4a;
+      }
+      #panel-header {
+        padding: 14px 18px 10px;
+        border-bottom: 1px solid #2d2d4a;
+        background: #16162a;
+      }
+      .hdr-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #f1f5f9;
+      }
+      .hdr-sub {
+        font-size: 11px;
+        color: #94a3b8;
+        margin-top: 2px;
+      }
+      .stats-bar {
+        display: flex;
+        gap: 10px;
+        margin-top: 8px;
+        font-size: 11px;
+        color: #94a3b8;
+      }
+      .stats-bar span {
+        background: #2d2d4a;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+      .stats-bar .n {
+        color: #60a5fa;
+        font-weight: 600;
+      }
+
+      /* Tabs */
+      #tabs {
+        display: flex;
+        background: #16162a;
+        border-bottom: 1px solid #2d2d4a;
+      }
+      .tab {
+        flex: 1;
+        padding: 10px 6px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 11.5px;
+        font-weight: 500;
+        color: #64748b;
+        border-bottom: 2px solid transparent;
+        transition: all 0.15s;
+      }
+      .tab.active {
+        color: #60a5fa;
+        border-bottom-color: #60a5fa;
+      }
+      .tab:hover {
+        color: #94a3b8;
+      }
+
+      /* Tab content */
+      .tab-content {
+        display: none;
+        flex: 1;
+        overflow-y: auto;
+        padding: 12px 16px;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .tab-content::-webkit-scrollbar {
+        width: 6px;
+      }
+      .tab-content::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .tab-content::-webkit-scrollbar-thumb {
+        background: #2d2d4a;
+        border-radius: 3px;
+      }
+
+      /* ── Search tab ──────────────────────────────────────── */
+      .search-box {
+        position: relative;
+        margin-bottom: 10px;
+      }
+      .search-box input {
+        width: 100%;
+        padding: 8px 12px;
+        background: #2d2d4a;
+        border: 1px solid #3d3d5c;
+        border-radius: 6px;
+        color: #e2e8f0;
+        font-size: 13px;
+        outline: none;
+        direction: rtl;
+      }
+      .search-box input::placeholder {
+        color: #64748b;
+      }
+      .search-box input:focus {
+        border-color: #60a5fa;
+      }
+
+      /* Filters */
+      .filter-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .filter-label {
+        font-size: 11px;
+        color: #94a3b8;
+        min-width: 40px;
+      }
+      .parcel-btn {
+        padding: 4px 10px;
+        background: #2d2d4a;
+        border: 1px solid #3d3d5c;
+        border-radius: 4px;
+        color: #94a3b8;
+        cursor: pointer;
+        font-size: 11px;
+        transition: all 0.15s;
+      }
+      .parcel-btn.active {
+        background: #3b82f6;
+        border-color: #3b82f6;
+        color: white;
+      }
+      .filter-select {
+        padding: 4px 8px;
+        background: #2d2d4a;
+        border: 1px solid #3d3d5c;
+        border-radius: 4px;
+        color: #94a3b8;
+        font-size: 11px;
+        direction: rtl;
+        outline: none;
+      }
+
+      /* Time slider */
+      .time-slider-wrap {
+        margin-bottom: 12px;
+      }
+      .time-slider-wrap label {
+        font-size: 11px;
+        color: #94a3b8;
+        display: flex;
+        justify-content: space-between;
+      }
+      .time-slider-wrap input[type="range"] {
+        width: 100%;
+        margin-top: 4px;
+        accent-color: #3b82f6;
+      }
+      .dual-range {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .dual-range input[type="range"] {
+        flex: 1;
+      }
+      .range-val {
+        font-size: 11px;
+        color: #60a5fa;
+        min-width: 32px;
+        text-align: center;
+      }
+
+      /* Result count */
+      .result-count {
+        font-size: 11px;
+        color: #64748b;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #2d2d4a;
+      }
+
+      /* Folder card */
+      .folder-card {
+        background: #222244;
+        border: 1px solid #2d2d4a;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        transition: border-color 0.15s;
+      }
+      .folder-card:hover {
+        border-color: #3b82f6;
+      }
+      .folder-card-header {
+        padding: 10px 12px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .folder-title {
+        font-weight: 600;
+        font-size: 13px;
+        color: #f1f5f9;
+      }
+      .folder-meta {
+        display: flex;
+        gap: 8px;
+        font-size: 11px;
+        color: #94a3b8;
+        flex-wrap: wrap;
+      }
+      .folder-meta .addr {
+        color: #60a5fa;
+      }
+      .badge {
+        display: inline-block;
+        padding: 1px 6px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: 500;
+      }
+      .badge-permit {
+        background: #1e3a5f;
+        color: #60a5fa;
+      }
+      .badge-danger {
+        background: #5f1e1e;
+        color: #f87171;
+      }
+      .badge-ownership {
+        background: #1e5f3a;
+        color: #4ade80;
+      }
+      .badge-default {
+        background: #3d3d5c;
+        color: #94a3b8;
+      }
+
+      /* Document list inside folder */
+      .folder-docs {
+        display: none;
+        border-top: 1px solid #2d2d4a;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .folder-card.expanded .folder-docs {
+        display: block;
+      }
+      .doc-item {
+        padding: 6px 12px;
+        border-bottom: 1px solid #1a1a2e;
+        font-size: 11px;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .doc-item:last-child {
+        border-bottom: none;
+      }
+      .doc-date {
+        color: #64748b;
+        min-width: 65px;
+        flex-shrink: 0;
+      }
+      .doc-type-badge {
+        min-width: 36px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .doc-liner {
+        color: #cbd5e1;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .doc-liner a {
+        color: #cbd5e1;
+        text-decoration: none;
+      }
+      .doc-liner a:hover {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+
+      /* ── Timeline tab ────────────────────────────────────── */
+      .timeline {
+        position: relative;
+        padding-right: 20px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        right: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #2d2d4a;
+      }
+      .tl-item {
+        position: relative;
+        margin-bottom: 12px;
+        padding-right: 20px;
+      }
+      .tl-dot {
+        position: absolute;
+        right: -16px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid #2d2d4a;
+      }
+      .tl-dot.permit {
+        background: #3b82f6;
+      }
+      .tl-dot.danger {
+        background: #ef4444;
+      }
+      .tl-dot.ownership {
+        background: #22c55e;
+      }
+      .tl-dot.mixed {
+        background: #6b7280;
+      }
+      .tl-year {
+        font-size: 10px;
+        color: #64748b;
+        margin-bottom: 2px;
+      }
+
+      /* ── Stats tab ───────────────────────────────────────── */
+      .stats-section {
+        margin-bottom: 24px;
+      }
+      .stats-section h3 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #2d2d4a;
+      }
+
+      /* Insight cards */
+      .insight-card {
+        background: #222244;
+        border: 1px solid #2d2d4a;
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-bottom: 8px;
+        font-size: 12px;
+        line-height: 1.6;
+        color: #e2e8f0;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .insight-emoji {
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      /* Bar chart */
+      .bar-chart {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .bar-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+      }
+      .bar-label {
+        min-width: 36px;
+        text-align: left;
+        color: #94a3b8;
+      }
+      .bar-track {
+        flex: 1;
+        height: 16px;
+        background: #2d2d4a;
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+      }
+      .bar-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.3s;
+        min-width: 1px;
+      }
+      .bar-fill.blue {
+        background: #3b82f6;
+      }
+      .bar-fill.red {
+        background: #ef4444;
+      }
+      .bar-fill.green {
+        background: #22c55e;
+      }
+      .bar-value {
+        min-width: 28px;
+        text-align: right;
+        color: #94a3b8;
+        font-size: 10px;
+      }
+
+      /* Dual bar */
+      .dual-bar-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        margin-bottom: 4px;
+      }
+      .dual-bar-label {
+        min-width: 40px;
+        text-align: left;
+        color: #94a3b8;
+      }
+      .dual-bar-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .dual-bar-track {
+        height: 10px;
+        background: #2d2d4a;
+        border-radius: 2px;
+        overflow: hidden;
+        display: flex;
+      }
+      .dual-bar-vals {
+        min-width: 60px;
+        font-size: 9px;
+        color: #64748b;
+        display: flex;
+        gap: 6px;
+      }
+
+      /* Heatmap */
+      .heatmap-grid {
+        display: grid;
+        gap: 2px;
+        font-size: 10px;
+      }
+      .heatmap-cell {
+        padding: 4px;
+        text-align: center;
+        border-radius: 3px;
+        color: #e2e8f0;
+        font-weight: 500;
+      }
+      .heatmap-header {
+        color: #94a3b8;
+        font-weight: 600;
+        font-size: 9px;
+      }
+
+      /* Data table */
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+      }
+      .data-table th {
+        text-align: right;
+        padding: 6px 8px;
+        color: #94a3b8;
+        border-bottom: 1px solid #2d2d4a;
+        font-weight: 600;
+        font-size: 10px;
+      }
+      .data-table td {
+        padding: 5px 8px;
+        border-bottom: 1px solid #1a1a2e;
+        color: #cbd5e1;
+      }
+      .data-table tr:hover td {
+        background: #222244;
+      }
+
+      /* ── Map ─────────────────────────────────────────────── */
+      #map {
+        flex: 1;
+        z-index: 1;
+      }
+
+      /* Leaflet tooltip override */
+      .building-tooltip {
+        background: #1a1a2e !important;
+        color: #e2e8f0 !important;
+        border: 1px solid #3b82f6 !important;
+        border-radius: 4px !important;
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        font-family: "Segoe UI", sans-serif !important;
+        direction: rtl !important;
+        white-space: nowrap !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+      }
+      .building-tooltip::before {
+        border-top-color: #3b82f6 !important;
+      }
+
+      /* Legend */
+      .map-legend {
+        background: rgba(26, 26, 46, 0.92);
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #e2e8f0;
+        font-size: 11px;
+        direction: rtl;
+        line-height: 1.8;
+        border: 1px solid #2d2d4a;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .legend-swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      /* ── Mobile ──────────────────────────────────────────── */
+      @media (max-width: 768px) {
+        #app {
+          flex-direction: column-reverse;
+        }
+        #side-panel {
+          width: 100%;
+          min-width: unset;
+          max-width: unset;
+          height: 45vh;
+        }
+        #map {
+          height: 55vh;
+        }
+      }
+
+      /* ── Misc ────────────────────────────────────────────── */
+      .note {
+        font-size: 10px;
+        color: #64748b;
+        font-style: italic;
+        margin-top: 4px;
+      }
+
+      /* ── Danger warning on folder card ────────────────────── */
+      .folder-danger-warning {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        margin: 0 12px 4px;
+        background: #5f1e1e;
+        border: 1px solid #ef4444;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #fca5a5;
+      }
+
+      /* ── Building filter banner ─────────────────────────── */
+      .building-filter-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: #1e3a5f;
+        border: 1px solid #3b82f6;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+      .building-filter-info {
+        font-size: 12px;
+        font-weight: 600;
+        color: #93c5fd;
+        line-height: 1.5;
+      }
+      .building-filter-clear {
+        padding: 4px 12px;
+        background: #3b82f6;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 11px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .building-filter-clear:hover {
+        background: #2563eb;
+      }
+      .building-empty {
+        text-align: center;
+        padding: 30px 16px;
+        color: #64748b;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="side-panel">
+        <div id="panel-header">
+          <div class="hdr-title">ארכיון בלוק תשבי-ששון</div>
+          <div class="hdr-sub" id="header-sub"></div>
+          <div class="stats-bar" id="stats-bar"></div>
+        </div>
+        <div id="tabs">
+          <div class="tab active" data-tab="search">חיפוש</div>
+          <div class="tab" data-tab="timeline">ציר זמן</div>
+          <div class="tab" data-tab="stats">סטטיסטיקה</div>
+        </div>
+        <div id="tab-search" class="tab-content active"></div>
+        <div id="tab-timeline" class="tab-content"></div>
+        <div id="tab-stats" class="tab-content"></div>
+      </div>
+      <div id="map"></div>
+    </div>
+
+    <script>
+      /* ══════════════════════════════════════════════════════
+         DATA + STATE
+         ══════════════════════════════════════════════════════ */
+      let DATA = null;
+      let map, parcelLayer, buildingLayer;
+      let activeParcelFilter = null;
+      let activeTypeFilter = "";
+      let searchText = "";
+      let yearMin = 1950,
+        yearMax = 2026;
+      let selectedBuildingLayer = null;
+      let activeBuildingFilter = null; // { building, folderIndices }
+
+      const TYPE_COLORS = {
+        permit: "#3b82f6",
+        danger: "#ef4444",
+        ownership: "#22c55e",
+        mixed: "#6b7280",
+        none: "#374151",
+      };
+
+      const TYPE_LABELS = {
+        permit: "היתרים/בנייה",
+        danger: "סכנה/הריסה",
+        ownership: "בעלות/טאבו",
+        mixed: "מעורב",
+        none: "ללא מסמכים",
+      };
+
+      function getBadgeClass(type) {
+        if (["היתר", "בקשה", "תוכנית"].includes(type)) return "badge-permit";
+        if (["צו", "הודעה"].includes(type)) return "badge-danger";
+        if (["נסח", "שומה"].includes(type)) return "badge-ownership";
+        return "badge-default";
+      }
+
+      function getCategoryForType(dominant) {
+        if (["היתר", "בקשה", "תוכנית"].includes(dominant)) return "permit";
+        if (["צו", "הודעה"].includes(dominant)) return "danger";
+        if (["נסח", "שומה"].includes(dominant)) return "ownership";
+        return "mixed";
+      }
+
+      /* ══════════════════════════════════════════════════════
+         INIT
+         ══════════════════════════════════════════════════════ */
+      async function init() {
+        const resp = await fetch("./archive/map-data.json");
+        DATA = await resp.json();
+
+        document.getElementById("header-sub").textContent =
+          `גוש 6135 | ${DATA.meta.total_documents.toLocaleString()} מסמכים | ${DATA.meta.total_folders} תיקים`;
+
+        // Stats bar
+        const parcelsWithDocs = DATA.parcels.filter(
+          (p) => p.doc_count > 0,
+        ).length;
+        document.getElementById("stats-bar").innerHTML = `
+          <span>חלקות: <span class="n">${parcelsWithDocs}</span></span>
+          <span>בניינים: <span class="n">${DATA.buildings.length}</span></span>
+          <span>תיקים: <span class="n">${DATA.meta.total_folders}</span></span>
+        `;
+
+        initMap();
+        initTabs();
+        buildSearchTab();
+        buildTimelineTab();
+        buildStatsTab();
+      }
+
+      /* ══════════════════════════════════════════════════════
+         MAP
+         ══════════════════════════════════════════════════════ */
+      function initMap() {
+        map = L.map("map", {
+          center: [32.0495, 34.7925],
+          zoom: 17,
+          zoomControl: false,
+        });
+
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution: "CartoDB",
+            maxZoom: 20,
+          },
+        ).addTo(map);
+
+        L.control.zoom({ position: "topright" }).addTo(map);
+
+        // Parcel layer
+        const maxDocCount = Math.max(
+          ...DATA.parcels.map((p) => p.doc_count),
+          1,
+        );
+        parcelLayer = L.geoJSON(
+          {
+            type: "FeatureCollection",
+            features: DATA.parcels.map((p) => ({
+              type: "Feature",
+              geometry: p.geometry,
+              properties: p,
+            })),
+          },
+          {
+            style: (feature) => {
+              const ratio = feature.properties.doc_count / maxDocCount;
+              return {
+                color: "#64748b",
+                weight: 1.5,
+                fillColor: "#94a3b8",
+                fillOpacity: 0.05 + ratio * 0.2,
+                dashArray: "4 4",
+              };
+            },
+            onEachFeature: (feature, layer) => {
+              const p = feature.properties;
+              layer.bindTooltip(`חלקה ${p.chelka} | ${p.doc_count} מסמכים`, {
+                sticky: true,
+                direction: "top",
+                offset: [0, -10],
+                className: "building-tooltip",
+              });
+            },
+          },
+        ).addTo(map);
+
+        // Building layer
+        buildingLayer = L.geoJSON(
+          {
+            type: "FeatureCollection",
+            features: DATA.buildings.map((b) => ({
+              type: "Feature",
+              geometry: b.geometry,
+              properties: b,
+            })),
+          },
+          {
+            style: (feature) => {
+              const b = feature.properties;
+              const hasData = b.doc_count > 0;
+              return {
+                color: hasData ? "#3b82f6" : "#4b5563",
+                weight: hasData ? 1.5 : 0.5,
+                fillColor: hasData ? "#3b82f6" : "#374151",
+                fillOpacity: hasData
+                  ? 0.15 + Math.min(b.doc_count / 200, 0.4)
+                  : 0.04,
+              };
+            },
+            onEachFeature: (feature, layer) => {
+              const b = feature.properties;
+              // Tooltip: address | floors | year
+              const parts = [];
+              if (b.address) parts.push(b.address);
+              if (b.floors) parts.push(`${b.floors} קומות`);
+              if (b.year) parts.push(b.year);
+              if (parts.length > 0) {
+                layer.bindTooltip(parts.join(" | "), {
+                  sticky: true,
+                  direction: "top",
+                  offset: [0, -10],
+                  className: "building-tooltip",
+                });
+              }
+              // Click: show matched folders, fallback to parcel folders
+              layer.on("click", () => {
+                const hasFolders =
+                  b.matched_folders && b.matched_folders.length > 0;
+                if (hasFolders) {
+                  showBuildingFolders(b);
+                } else if (b.doc_count > 0) {
+                  showParcelFolders(b.parcel);
+                } else {
+                  // No docs — show empty state with highlight
+                  showBuildingFolders(b);
+                }
+              });
+            },
+          },
+        ).addTo(map);
+
+        // Legend
+        const legend = L.control({ position: "bottomleft" });
+        legend.onAdd = function () {
+          const div = L.DomUtil.create("div", "map-legend");
+          div.innerHTML = `
+            <div style="font-weight:600;margin-bottom:4px;">בניינים</div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:#3b82f6"></div>
+              עם מסמכים בארכיון
+            </div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:#374151;opacity:0.3"></div>
+              ללא מסמכים
+            </div>
+          `;
+          return div;
+        };
+        legend.addTo(map);
+      }
+
+      function showParcelFolders(chelka) {
+        // Switch to search tab, filter by parcel
+        switchTab("search");
+        // Clear other filters, set parcel
+        document
+          .querySelectorAll(".parcel-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        const parcelStr = `6135_${chelka}`;
+        const btn = document.querySelector(
+          `.parcel-btn[data-parcel="${parcelStr}"]`,
+        );
+        if (btn) {
+          btn.classList.add("active");
+          activeParcelFilter = parcelStr;
+        } else {
+          activeParcelFilter = null;
+        }
+        applyFilters();
+      }
+
+      function showBuildingFolders(b) {
+        switchTab("search");
+        // Reset parcel filter
+        document
+          .querySelectorAll(".parcel-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        activeParcelFilter = null;
+
+        // Highlight clicked building on map
+        highlightBuilding(b);
+
+        // Set building filter
+        activeBuildingFilter = {
+          building: b,
+          folderIndices: b.matched_folders || [],
+        };
+
+        applyFilters();
+      }
+
+      function highlightBuilding(b) {
+        // Remove previous highlight
+        clearBuildingHighlight();
+
+        // Find the building geometry and add a highlight layer
+        if (b.geometry) {
+          selectedBuildingLayer = L.geoJSON(b.geometry, {
+            style: {
+              color: "#fbbf24",
+              weight: 4,
+              fillColor: "#fbbf24",
+              fillOpacity: 0.3,
+              dashArray: "",
+            },
+          }).addTo(map);
+        }
+      }
+
+      function clearBuildingHighlight() {
+        if (selectedBuildingLayer) {
+          map.removeLayer(selectedBuildingLayer);
+          selectedBuildingLayer = null;
+        }
+      }
+
+      function clearBuildingFilter() {
+        activeBuildingFilter = null;
+        clearBuildingHighlight();
+        applyFilters();
+      }
+
+      /* ══════════════════════════════════════════════════════
+         TABS
+         ══════════════════════════════════════════════════════ */
+      function initTabs() {
+        document.querySelectorAll(".tab").forEach((tab) => {
+          tab.addEventListener("click", () => switchTab(tab.dataset.tab));
+        });
+      }
+
+      function switchTab(name) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((tc) =>
+            tc.classList.toggle("active", tc.id === `tab-${name}`),
+          );
+      }
+
+      /* ══════════════════════════════════════════════════════
+         TAB 1: SEARCH
+         ══════════════════════════════════════════════════════ */
+      function buildSearchTab() {
+        const container = document.getElementById("tab-search");
+
+        // Get all unique doc types
+        const allTypes = new Set();
+        DATA.folders.forEach((f) =>
+          Object.keys(f.doc_types).forEach((t) => allTypes.add(t)),
+        );
+        const typeOptions = [...allTypes]
+          .sort()
+          .map((t) => `<option value="${t}">${t}</option>`)
+          .join("");
+
+        container.innerHTML = `
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="חיפוש חופשי — תיאור, אנשים, כתובות..." />
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">חלקה:</span>
+            <button class="parcel-btn" data-parcel="6135_43">43</button>
+            <button class="parcel-btn" data-parcel="6135_44">44</button>
+            <button class="parcel-btn" data-parcel="6135_71">71</button>
+            <button class="parcel-btn" data-parcel="6135_110">110</button>
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">סוג:</span>
+            <select class="filter-select" id="type-filter">
+              <option value="">הכל</option>
+              ${typeOptions}
+            </select>
+          </div>
+          <div class="time-slider-wrap">
+            <label>
+              <span>טווח שנים</span>
+              <span id="year-display">1950 – 2026</span>
+            </label>
+            <div class="dual-range">
+              <input type="range" id="year-min" min="1950" max="2026" value="1950" />
+              <input type="range" id="year-max" min="1950" max="2026" value="2026" />
+            </div>
+          </div>
+          <div class="result-count" id="result-count"></div>
+          <div id="folder-results"></div>
+        `;
+
+        // Event listeners
+        document
+          .getElementById("search-input")
+          .addEventListener("input", (e) => {
+            searchText = e.target.value;
+            activeBuildingFilter = null;
+            clearBuildingHighlight();
+            applyFilters();
+          });
+
+        document.querySelectorAll(".parcel-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            activeBuildingFilter = null;
+            clearBuildingHighlight();
+            if (btn.classList.contains("active")) {
+              btn.classList.remove("active");
+              activeParcelFilter = null;
+            } else {
+              document
+                .querySelectorAll(".parcel-btn")
+                .forEach((b) => b.classList.remove("active"));
+              btn.classList.add("active");
+              activeParcelFilter = btn.dataset.parcel;
+            }
+            applyFilters();
+          });
+        });
+
+        document
+          .getElementById("type-filter")
+          .addEventListener("change", (e) => {
+            activeTypeFilter = e.target.value;
+            activeBuildingFilter = null;
+            clearBuildingHighlight();
+            applyFilters();
+          });
+
+        const yearMinEl = document.getElementById("year-min");
+        const yearMaxEl = document.getElementById("year-max");
+        const yearDisplay = document.getElementById("year-display");
+
+        function updateYears() {
+          yearMin = parseInt(yearMinEl.value);
+          yearMax = parseInt(yearMaxEl.value);
+          if (yearMin > yearMax) {
+            yearMinEl.value = yearMax;
+            yearMin = yearMax;
+          }
+          yearDisplay.textContent = `${yearMin} – ${yearMax}`;
+          activeBuildingFilter = null;
+          clearBuildingHighlight();
+          applyFilters();
+        }
+        yearMinEl.addEventListener("input", updateYears);
+        yearMaxEl.addEventListener("input", updateYears);
+
+        applyFilters();
+      }
+
+      function applyFilters() {
+        let results;
+
+        // Building filter overrides other filters
+        if (activeBuildingFilter) {
+          const matchedIndices = new Set(activeBuildingFilter.folderIndices);
+          results = DATA.folders.filter((_, i) => matchedIndices.has(i));
+        } else {
+          results = DATA.folders.filter((f) => {
+            // Parcel filter
+            if (activeParcelFilter && f.parcel !== activeParcelFilter)
+              return false;
+
+            // Type filter
+            if (activeTypeFilter && !f.doc_types[activeTypeFilter])
+              return false;
+
+            // Year filter
+            if (f.date_range) {
+              const parts = f.date_range.split("–");
+              if (parts.length === 2) {
+                const fStart = parseInt(parts[0]);
+                const fEnd = parseInt(parts[1]);
+                if (fEnd < yearMin || fStart > yearMax) return false;
+              }
+            }
+
+            // Text search
+            if (searchText) {
+              const q = searchText.toLowerCase();
+              const haystack = [
+                f.folder_title,
+                f.primary_address,
+                ...f.addresses,
+                ...f.people.filter(Boolean),
+                ...f.documents.map((d) => d.one_liner || ""),
+              ]
+                .join(" ")
+                .toLowerCase();
+              if (!haystack.includes(q)) return false;
+            }
+
+            return true;
+          });
+        }
+
+        const container = document.getElementById("folder-results");
+        let bannerHtml = "";
+
+        if (activeBuildingFilter) {
+          const b = activeBuildingFilter.building;
+          const title = b.address || `בניין ${b.id}`;
+          const totalDocs = results.reduce((s, f) => s + f.doc_count, 0);
+          bannerHtml = `
+            <div class="building-filter-banner">
+              <div class="building-filter-info">
+                בניין: ${title} | ${results.length} תיקים | ${totalDocs} מסמכים
+              </div>
+              <button class="building-filter-clear" onclick="clearBuildingFilter()">הצג הכל</button>
+            </div>`;
+
+          document.getElementById("result-count").textContent =
+            `${results.length} תיקים לבניין זה`;
+        } else {
+          document.getElementById("result-count").textContent =
+            `${results.length} תיקים מתוך ${DATA.folders.length}`;
+        }
+
+        if (activeBuildingFilter && results.length === 0) {
+          container.innerHTML =
+            bannerHtml +
+            '<div class="building-empty">אין מסמכים לבניין זה</div>';
+          return;
+        }
+
+        if (results.length === 0) {
+          container.innerHTML =
+            '<div style="color:#64748b;text-align:center;padding:20px;">לא נמצאו תוצאות</div>';
+          return;
+        }
+
+        container.innerHTML =
+          bannerHtml +
+          results
+            .sort((a, b) => b.doc_count - a.doc_count)
+            .map((f) => renderFolderCard(f))
+            .join("");
+
+        // Attach expand listeners
+        container.querySelectorAll(".folder-card-header").forEach((hdr) => {
+          hdr.addEventListener("click", () => {
+            hdr.closest(".folder-card").classList.toggle("expanded");
+          });
+        });
+      }
+
+      function hasDangerIndicator(f) {
+        const dangerKeywords = ["הריסה", "מסוכן", "סכנה"];
+        const hasDangerTag = (f.tags || []).some((t) =>
+          dangerKeywords.some((k) => t.includes(k)),
+        );
+        const hasDangerType = f.dominant_type === "צו";
+        return hasDangerTag || hasDangerType;
+      }
+
+      function renderFolderCard(f) {
+        const badgeCls = getBadgeClass(f.dominant_type);
+        const isDanger = hasDangerIndicator(f);
+        const docs = f.documents
+          .map(
+            (d) => `
+          <div class="doc-item">
+            <span class="doc-date">${d.date || "—"}</span>
+            <span class="doc-type-badge"><span class="badge ${getBadgeClass(d.doc_type)}">${d.doc_type || "?"}</span></span>
+            <span class="doc-liner"><a href="./docs/${d.file_name}" target="_blank" title="${(d.one_liner || "").replace(/"/g, "&quot;")}">${d.one_liner || d.file_name}</a></span>
+          </div>`,
+          )
+          .join("");
+
+        const dangerWarning = isDanger
+          ? `<div class="folder-danger-warning">⚠ צו בניין מסוכן</div>`
+          : "";
+
+        return `
+          <div class="folder-card">
+            <div class="folder-card-header">
+              <div class="folder-title">${f.folder_title || f.folder_id}</div>
+              <div class="folder-meta">
+                <span class="addr">${f.primary_address || "—"}</span>
+                <span>${f.date_range || "—"}</span>
+                <span>${f.doc_count}${f.doc_count % 50 === 0 && f.doc_count > 0 ? "+" : ""} מסמכים</span>
+                <span class="badge ${badgeCls}">${f.dominant_type || "—"}</span>
+              </div>
+            </div>
+            ${dangerWarning}
+            <div class="folder-docs">${docs}</div>
+          </div>`;
+      }
+
+      /* ══════════════════════════════════════════════════════
+         TAB 2: TIMELINE
+         ══════════════════════════════════════════════════════ */
+      function buildTimelineTab() {
+        const container = document.getElementById("tab-timeline");
+        const sorted = [...DATA.folders]
+          .filter((f) => f.date_range)
+          .sort((a, b) => {
+            const aYear = parseInt(a.date_range.split("–")[0]) || 9999;
+            const bYear = parseInt(b.date_range.split("–")[0]) || 9999;
+            return aYear - bYear;
+          });
+
+        container.innerHTML = `
+          <div class="timeline">
+            ${sorted
+              .map((f) => {
+                const cat = getCategoryForType(f.dominant_type);
+                return `
+                <div class="tl-item">
+                  <div class="tl-dot ${cat}"></div>
+                  <div class="tl-year">${f.date_range}</div>
+                  ${renderFolderCard(f)}
+                </div>`;
+              })
+              .join("")}
+          </div>`;
+
+        container.querySelectorAll(".folder-card-header").forEach((hdr) => {
+          hdr.addEventListener("click", () => {
+            hdr.closest(".folder-card").classList.toggle("expanded");
+          });
+        });
+      }
+
+      /* ══════════════════════════════════════════════════════
+         TAB 3: STATS
+         ══════════════════════════════════════════════════════ */
+      function buildStatsTab() {
+        const container = document.getElementById("tab-stats");
+        const a = DATA.analytics;
+        let html = "";
+
+        // ── Key findings ──
+        html += `<div class="stats-section"><h3>ממצאים מרכזיים</h3>`;
+        const emojis = ["🔍", "⚠️", "📊", "🏢", "👤"];
+        a.key_findings.forEach((f, i) => {
+          const emoji =
+            f.includes("פער") || f.includes("בלתי חוקית")
+              ? "⚠️"
+              : f.includes("צווי") || f.includes("סכנה")
+                ? "⚠️"
+                : f.includes("בעלים") || f.includes("מושע")
+                  ? "📊"
+                  : "🔍";
+          html += `<div class="insight-card"><span class="insight-emoji">${emoji}</span><span>${f}</span></div>`;
+        });
+        html += `</div>`;
+
+        // ── Demolition by year ──
+        html += `<div class="stats-section"><h3>צווי הריסה לפי שנה</h3>`;
+        const demoYears = Object.entries(a.demolition_by_year)
+          .map(([y, c]) => [parseInt(y), c])
+          .filter(([y]) => y >= 1960 && y <= 2025);
+        const maxDemo = Math.max(...demoYears.map(([, c]) => c), 1);
+        html += `<div class="bar-chart">`;
+        demoYears.forEach(([year, count]) => {
+          const pct = (count / maxDemo) * 100;
+          const isNineties = year >= 1990 && year <= 1999;
+          const color = isNineties ? "red" : "blue";
+          html += `
+            <div class="bar-row">
+              <span class="bar-label">${year}</span>
+              <div class="bar-track">
+                <div class="bar-fill ${color}" style="width:${pct}%"></div>
+              </div>
+              <span class="bar-value">${count}</span>
+            </div>`;
+        });
+        html += `</div>`;
+        html += `<div class="note">שנות ה-90 מודגשות באדום</div></div>`;
+
+        // ── Permits vs completions ──
+        html += `<div class="stats-section"><h3>היתרים מול תעודות גמר</h3>`;
+        const pvEntries = Object.entries(a.permits_vs_completions);
+        const maxPV = Math.max(
+          ...pvEntries.map(([, v]) => Math.max(v.permits, v.completions)),
+          1,
+        );
+        pvEntries.forEach(([decade, v]) => {
+          const pPct = (v.permits / maxPV) * 100;
+          const cPct = (v.completions / maxPV) * 100;
+          html += `
+            <div class="dual-bar-row">
+              <span class="dual-bar-label">${decade}</span>
+              <div class="dual-bar-container">
+                <div class="dual-bar-track">
+                  <div class="bar-fill blue" style="width:${pPct}%"></div>
+                </div>
+                <div class="dual-bar-track">
+                  <div class="bar-fill green" style="width:${cPct}%"></div>
+                </div>
+              </div>
+              <div class="dual-bar-vals">
+                <span style="color:#60a5fa">${v.permits}</span>
+                <span style="color:#4ade80">${v.completions}</span>
+              </div>
+            </div>`;
+        });
+        html += `<div class="note" style="margin-top:6px">
+          <span style="color:#60a5fa">■</span> היתרים
+          &nbsp;<span style="color:#4ade80">■</span> תעודות גמר
+          &nbsp;— פער = בנייה שלא הושלמה רשמית
+        </div></div>`;
+
+        // ── Parcel decade heatmap ──
+        html += `<div class="stats-section"><h3>פעילות לפי חלקה ועשור</h3>`;
+        const heatData = a.parcel_decade_heatmap;
+        const allDecades = [
+          ...new Set(Object.values(heatData).flatMap((d) => Object.keys(d))),
+        ].sort();
+        const parcels = Object.keys(heatData).sort();
+        const cols = allDecades.length + 1;
+
+        html += `<div class="heatmap-grid" style="grid-template-columns: 70px repeat(${allDecades.length}, 1fr)">`;
+        // Header row
+        html += `<div class="heatmap-header">חלקה</div>`;
+        allDecades.forEach(
+          (d) => (html += `<div class="heatmap-header">${d}</div>`),
+        );
+
+        // Data rows
+        const allVals = Object.values(heatData).flatMap((d) =>
+          Object.values(d),
+        );
+        const maxHeat = Math.max(...allVals, 1);
+        parcels.forEach((p) => {
+          const label = p.replace("6135_", "");
+          html += `<div class="heatmap-cell" style="background:#2d2d4a;font-weight:600">${label}</div>`;
+          allDecades.forEach((d) => {
+            const val = heatData[p]?.[d] || 0;
+            const intensity = val / maxHeat;
+            const bg =
+              val === 0
+                ? "#1a1a2e"
+                : `rgba(59,130,246,${0.15 + intensity * 0.7})`;
+            html += `<div class="heatmap-cell" style="background:${bg}">${val || ""}</div>`;
+          });
+        });
+        html += `</div></div>`;
+
+        // ── Danger hotspots ──
+        html += `<div class="stats-section"><h3>כתובות עם מבנים מסוכנים</h3>`;
+        const hotspots = a.danger_hotspots.slice(0, 20);
+        html += `<table class="data-table">
+          <tr><th>כתובת</th><th>מסמכים</th><th>טווח</th></tr>
+          ${hotspots
+            .map(
+              (h) =>
+                `<tr><td>${h.address}</td><td>${h.count}</td><td>${h.date_range}</td></tr>`,
+            )
+            .join("")}
+        </table></div>`;
+
+        // ── Cross parcel owners ──
+        html += `<div class="stats-section"><h3>בעלים ביותר מחלקה אחת</h3>`;
+        const owners = a.cross_parcel_owners.slice(0, 20);
+        html += `<table class="data-table">
+          <tr><th>שם</th><th>חלקות</th><th>מסמכים</th></tr>
+          ${owners
+            .map(
+              (o) =>
+                `<tr><td>${o.name}</td><td>${o.parcels.map((p) => p.replace("6135_", "")).join(", ")}</td><td>${o.doc_count}</td></tr>`,
+            )
+            .join("")}
+        </table></div>`;
+
+        container.innerHTML = html;
+      }
+
+      /* ══════════════════════════════════════════════════════
+         BOOT
+         ══════════════════════════════════════════════════════ */
+      init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,850 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 22558,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 105,
+        "ms_shetach_rashum": 1881,
+        "ms_shetach": 1900.02,
+        "tr_idkun_acharon": 1585785600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 6135105,
+        "k_dargat_diyuk": 10,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 483.04754456810514,
+        "Shape_Area": 1900.020569914068
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79341099657441, 32.050647240024645],
+            [34.79313414399125, 32.048536545163195],
+            [34.79306319874571, 32.04864677013349],
+            [34.7933226650289, 32.05066412825983],
+            [34.79341099657441, 32.050647240024645]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 23096,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 106,
+        "ms_shetach_rashum": 276,
+        "ms_shetach": 282.19,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 6135106,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 98.5780467111786,
+        "Shape_Area": 282.1883862500619
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79313414399125, 32.048536545163195],
+            [34.7930925778178, 32.04821964491489],
+            [34.79302228207653, 32.04832862930604],
+            [34.79306319874571, 32.04864677013349],
+            [34.79313414399125, 32.048536545163195]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 24782,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 84,
+        "ms_shetach_rashum": 880,
+        "ms_shetach": 884.25,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613584,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 129.04633892144088,
+        "Shape_Area": 884.2467794000355
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.7934852944766, 32.04764459094124],
+            [34.793192511113396, 32.047604937608256],
+            [34.79325011952865, 32.04803191848158],
+            [34.79330774900454, 32.0479763078571],
+            [34.79340545939915, 32.04789156398106],
+            [34.793509519377444, 32.047814138813514],
+            [34.7934852944766, 32.04764459094124]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 25093,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 70,
+        "ms_shetach_rashum": 3188,
+        "ms_shetach": 3233.37,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613570,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 500.20253716107953,
+        "Shape_Area": 3233.3668824956585
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79304330316569, 32.05070904214162],
+            [34.792829214952526, 32.049020345636826],
+            [34.7927036314285, 32.04922313872979],
+            [34.79295810578661, 32.051199665169],
+            [34.79310233142971, 32.05117581184522],
+            [34.79304330316569, 32.05070904214162]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 25095,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 43,
+        "ms_shetach_rashum": 3575,
+        "ms_shetach": 3521.07,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613543,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 840.8341924284819,
+        "Shape_Area": 3521.0737065016874
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79232412507432, 32.04754641161273],
+            [34.79223109277899, 32.04753833574187],
+            [34.79271210290263, 32.051240357969675],
+            [34.79280041217178, 32.05122575613521],
+            [34.79256811289477, 32.04943126507921],
+            [34.79252638837914, 32.04910893719747],
+            [34.79232412507432, 32.04754641161273]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 26011,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 110,
+        "ms_shetach_rashum": 2443,
+        "ms_shetach": 2477.87,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 6135110,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 366.04572149051234,
+        "Shape_Area": 2477.8671455010126
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79248930760803, 32.047558410185225],
+            [34.79232412507432, 32.04754641161273],
+            [34.79252638837914, 32.04910893719747],
+            [34.79266158668353, 32.04889657141633],
+            [34.79248930760803, 32.047558410185225]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 26012,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 78,
+        "ms_shetach_rashum": 589,
+        "ms_shetach": 579.92,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 0,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613578,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 258.12447521540344,
+        "Shape_Area": 579.9154980006568
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.792696279958314, 32.04756828075845],
+            [34.79264485361333, 32.04756601256988],
+            [34.792788419414336, 32.04869847172882],
+            [34.792829655453794, 32.04863091707111],
+            [34.792696279958314, 32.04756828075845]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 26551,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 46,
+        "ms_shetach_rashum": 6752,
+        "ms_shetach": 6685.35,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613546,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 889.2943793513645,
+        "Shape_Area": 6685.347656006423
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.7916603274415, 32.04750256244914],
+            [34.79149052399488, 32.04749398357686],
+            [34.79204102981906, 32.051351351790025],
+            [34.7922011609367, 32.05132487290834],
+            [34.7916603274415, 32.04750256244914]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 26552,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 79,
+        "ms_shetach_rashum": 4347,
+        "ms_shetach": 4364.75,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613579,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 543.1582545237857,
+        "Shape_Area": 4364.745421292115
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79359912202762, 32.05061855054837],
+            [34.79328570538301, 32.04829566839339],
+            [34.79323305311785, 32.048373074334606],
+            [34.79319408539437, 32.048437565882594],
+            [34.79313414399125, 32.048536545163195],
+            [34.79341099657441, 32.050647240024645],
+            [34.79359912202762, 32.05061855054837]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 26766,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 107,
+        "ms_shetach_rashum": 584,
+        "ms_shetach": 597.26,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 6135107,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 173.98947964303628,
+        "Shape_Area": 597.2561004799679
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79301072823748, 32.0475956076954],
+            [34.79292702915477, 32.04758800449826],
+            [34.79302228207653, 32.04832862930604],
+            [34.7930925778178, 32.04821964491489],
+            [34.79301072823748, 32.0475956076954]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27163,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 72,
+        "ms_shetach_rashum": 512,
+        "ms_shetach": 515.51,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613572,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 122.77616416414332,
+        "Shape_Area": 515.5096069999128
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.792829214952526, 32.049020345636826],
+            [34.792788419414336, 32.04869847172882],
+            [34.79266158668353, 32.04889657141633],
+            [34.7927036314285, 32.04922313872979],
+            [34.792829214952526, 32.049020345636826]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27226,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 76,
+        "ms_shetach_rashum": 872,
+        "ms_shetach": 868.97,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613576,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 395.94850112153716,
+        "Shape_Area": 868.9741580015468
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79308965767178, 32.05070223972878],
+            [34.79287029468523, 32.048954621100854],
+            [34.792829214952526, 32.049020345636826],
+            [34.79304330316569, 32.05070904214162],
+            [34.79308965767178, 32.05070223972878]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27227,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 74,
+        "ms_shetach_rashum": 1359,
+        "ms_shetach": 1385.86,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613574,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 251.43647865826884,
+        "Shape_Area": 1385.8583761503012
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79283384167748, 32.04757956694687],
+            [34.792696279958314, 32.04756828075845],
+            [34.792829655453794, 32.04863091707111],
+            [34.79294449472659, 32.048448580387344],
+            [34.79283384167748, 32.04757956694687]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27304,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 45,
+        "ms_shetach_rashum": 9821,
+        "ms_shetach": 9861.5,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613545,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 894.692440266263,
+        "Shape_Area": 9861.496926995827
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79192094803726, 32.04751735235951],
+            [34.7916603274415, 32.04750256244914],
+            [34.7922011609367, 32.05132487290834],
+            [34.79243339971259, 32.05128645397932],
+            [34.79192094803726, 32.04751735235951]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27305,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 77,
+        "ms_shetach_rashum": 170,
+        "ms_shetach": 167.56,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613577,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 88.7005327249399,
+        "Shape_Area": 167.5578095004636
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79287029468523, 32.048954621100854],
+            [34.792829655453794, 32.04863091707111],
+            [34.792788419414336, 32.04869847172882],
+            [34.792829214952526, 32.049020345636826],
+            [34.79287029468523, 32.048954621100854]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27761,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 47,
+        "ms_shetach_rashum": 11831,
+        "ms_shetach": 11916.88,
+        "tr_idkun_acharon": 1612051200000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "תתג 2675-2019   תתג 3121-2018",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613547,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 923.3865078658472,
+        "Shape_Area": 11916.883760751178
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79149052399488, 32.04749398357686],
+            [34.79118028963344, 32.04748595053669],
+            [34.79177069703032, 32.05139606676975],
+            [34.79204102981906, 32.051351351790025],
+            [34.79149052399488, 32.04749398357686]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 27763,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 38,
+        "ms_shetach_rashum": 3035,
+        "ms_shetach": 3042.34,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613538,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 706.7038120401096,
+        "Shape_Area": 3042.336923688248
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79292702915477, 32.04758800449826],
+            [34.79283384167748, 32.04757956694687],
+            [34.79294449472659, 32.048448580387344],
+            [34.79294548904422, 32.048456368787996],
+            [34.79298562135954, 32.04877157085158],
+            [34.79322843963969, 32.05067848582654],
+            [34.7933226650289, 32.05066412825983],
+            [34.79306319874571, 32.04864677013349],
+            [34.79302228207653, 32.04832862930604],
+            [34.79292702915477, 32.04758800449826]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 28691,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 73,
+        "ms_shetach_rashum": 2729,
+        "ms_shetach": 2681.71,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613573,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 444.004960983125,
+        "Shape_Area": 2681.712117350021
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79322843963969, 32.05067848582654],
+            [34.79298562135954, 32.04877157085158],
+            [34.79287029468523, 32.048954621100854],
+            [34.79308965767178, 32.05070223972878],
+            [34.79322843963969, 32.05067848582654]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 28692,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 109,
+        "ms_shetach_rashum": 547,
+        "ms_shetach": 552.18,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 6135109,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 125.56960624916017,
+        "Shape_Area": 552.1750440000066
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.7927036314285, 32.04922313872979],
+            [34.79266158668353, 32.04889657141633],
+            [34.79252638837914, 32.04910893719747],
+            [34.79256811289477, 32.04943126507921],
+            [34.7927036314285, 32.04922313872979]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 28826,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 75,
+        "ms_shetach_rashum": 486,
+        "ms_shetach": 467.96,
+        "tr_idkun_acharon": 1612051200000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613575,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 118.1084978592454,
+        "Shape_Area": 467.95665470895875
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79294548904422, 32.048456368787996],
+            [34.79294449472659, 32.048448580387344],
+            [34.792829655453794, 32.04863091707111],
+            [34.79287029468523, 32.048954621100854],
+            [34.79298562135954, 32.04877157085158],
+            [34.79294548904422, 32.048456368787996]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 28827,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 80,
+        "ms_shetach_rashum": 541,
+        "ms_shetach": 559.29,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 0,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613580,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 120.72941044929811,
+        "Shape_Area": 559.288218950307
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79328570538301, 32.04829566839339],
+            [34.79325011952865, 32.04803191848158],
+            [34.7931618386339, 32.04812777675265],
+            [34.7930925778178, 32.04821964491489],
+            [34.79313414399125, 32.048536545163195],
+            [34.79319408539437, 32.048437565882594],
+            [34.79323305311785, 32.048373074334606],
+            [34.79328570538301, 32.04829566839339]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 29765,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 48,
+        "ms_shetach_rashum": 4913,
+        "ms_shetach": 4976.79,
+        "tr_idkun_acharon": 1622073600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "תתג 2675-2019   תתג 3121-2018",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613548,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 899.5563238298387,
+        "Shape_Area": 4976.789970826778
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79177069703032, 32.05139606676975],
+            [34.79118028963344, 32.04748595053669],
+            [34.79112958950552, 32.047487027045314],
+            [34.79105084587147, 32.04748484050061],
+            [34.79166025171809, 32.05141433735125],
+            [34.79168963083913, 32.051409051105715],
+            [34.79172840717409, 32.0514030622871],
+            [34.79177069703032, 32.05139606676975]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 43411,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 81,
+        "ms_shetach_rashum": 996,
+        "ms_shetach": 991.23,
+        "tr_idkun_acharon": 1711497600000,
+        "k_input_source": 1,
+        "tr_chelka": 662860800000,
+        "heara": null,
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613581,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 160.1070389401231,
+        "Shape_Area": 991.2298206446318
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.793192511113396, 32.047604937608256],
+            [34.79301072823748, 32.0475956076954],
+            [34.7930925778178, 32.04821964491489],
+            [34.7931618386339, 32.04812777675265],
+            [34.79325011952865, 32.04803191848158],
+            [34.793192511113396, 32.047604937608256]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 43477,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 44,
+        "ms_shetach_rashum": 11476,
+        "ms_shetach": 11584.12,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613544,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 889.9780435176574,
+        "Shape_Area": 11584.116395996698
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79223109277899, 32.04753833574187],
+            [34.79192094803726, 32.04751735235951],
+            [34.79243339971259, 32.05128645397932],
+            [34.79271210290263, 32.051240357969675],
+            [34.79223109277899, 32.04753833574187]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "oid_chelka": 43478,
+        "ms_gush": 6135,
+        "k_status_hesder": 0,
+        "ms_chelka": 71,
+        "ms_shetach_rashum": 1991,
+        "ms_shetach": 1984.21,
+        "tr_idkun_acharon": 1597881600000,
+        "k_input_source": 2,
+        "tr_chelka": 662860800000,
+        "heara": "2675-2019",
+        "sw_baalut": -1,
+        "ms_gush_vechelka": 613571,
+        "k_dargat_diyuk": 15,
+        "date_import": "30/03/2026 00:29:18",
+        "Shape_Length": 315.325376874932,
+        "Shape_Area": 1984.214188999023
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [34.79264485361333, 32.04756601256988],
+            [34.79248930760803, 32.047558410185225],
+            [34.79266158668353, 32.04889657141633],
+            [34.792788419414336, 32.04869847172882],
+            [34.79264485361333, 32.04756601256988]
+          ]
+        ]
+      }
+    }
+  ]
+}
