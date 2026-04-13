@@ -446,6 +446,15 @@
       .bar-fill.green {
         background: #22c55e;
       }
+      .bar-fill.orange {
+        background: #f97316;
+      }
+      .bar-fill.yellow {
+        background: #eab308;
+      }
+      .bar-fill.purple {
+        background: #a855f7;
+      }
       .bar-value {
         min-width: 28px;
         text-align: right;
@@ -552,6 +561,39 @@
         border-top-color: #3b82f6 !important;
       }
 
+      /* Anomaly popup */
+      .anomaly-popup {
+        direction: rtl;
+        font-family: "Segoe UI", sans-serif;
+        font-size: 12px;
+        max-width: 280px;
+        color: #1e293b;
+      }
+      .anomaly-popup h4 {
+        margin: 0 0 6px;
+        font-size: 13px;
+      }
+      .anomaly-popup .score-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 13px;
+        color: white;
+        margin-bottom: 6px;
+      }
+      .anomaly-popup ul {
+        margin: 4px 0;
+        padding-right: 16px;
+        font-size: 11px;
+        line-height: 1.6;
+      }
+      .anomaly-popup .people-list {
+        font-size: 10px;
+        color: #64748b;
+        margin-top: 4px;
+      }
+
       /* Legend */
       .map-legend {
         background: rgba(26, 26, 46, 0.92);
@@ -562,6 +604,7 @@
         direction: rtl;
         line-height: 1.8;
         border: 1px solid #2d2d4a;
+        max-width: 200px;
       }
       .legend-item {
         display: flex;
@@ -573,6 +616,128 @@
         height: 14px;
         border-radius: 3px;
         flex-shrink: 0;
+      }
+      .legend-divider {
+        border-top: 1px solid #2d2d4a;
+        margin: 4px 0;
+      }
+
+      /* ── Anomaly tab ─────────────────────────────────────── */
+      .anomaly-rank-card {
+        background: #222244;
+        border: 1px solid #2d2d4a;
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: border-color 0.15s;
+      }
+      .anomaly-rank-card:hover {
+        border-color: #f97316;
+      }
+      .anomaly-rank-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+      .anomaly-rank-num {
+        font-size: 18px;
+        font-weight: 800;
+        color: #f97316;
+        min-width: 24px;
+      }
+      .anomaly-rank-addr {
+        font-size: 13px;
+        font-weight: 600;
+        color: #f1f5f9;
+        flex: 1;
+      }
+      .anomaly-rank-score {
+        font-size: 12px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: white;
+      }
+      .anomaly-rank-desc {
+        font-size: 11px;
+        color: #94a3b8;
+        line-height: 1.5;
+        margin-top: 2px;
+      }
+      .anomaly-rank-flags {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+      .anomaly-flag {
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: 3px;
+        background: #3d3d5c;
+        color: #cbd5e1;
+      }
+
+      /* Anomaly filter buttons */
+      .anomaly-filter-row {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+      .anomaly-filter-btn {
+        padding: 4px 10px;
+        background: #2d2d4a;
+        border: 1px solid #3d3d5c;
+        border-radius: 4px;
+        color: #94a3b8;
+        cursor: pointer;
+        font-size: 11px;
+        transition: all 0.15s;
+      }
+      .anomaly-filter-btn.active {
+        background: #f97316;
+        border-color: #f97316;
+        color: white;
+      }
+
+      /* Toggle switch */
+      .toggle-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        font-size: 11px;
+        color: #94a3b8;
+      }
+      .toggle-switch {
+        position: relative;
+        width: 36px;
+        height: 20px;
+        background: #2d2d4a;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+        flex-shrink: 0;
+      }
+      .toggle-switch.on {
+        background: #f97316;
+      }
+      .toggle-switch::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.2s;
+      }
+      .toggle-switch.on::after {
+        transform: translateX(-16px);
       }
 
       /* ── Mobile ──────────────────────────────────────────── */
@@ -651,6 +816,40 @@
         color: #64748b;
         font-size: 13px;
       }
+
+      /* Overlay layer control */
+      .overlay-control {
+        background: rgba(26, 26, 46, 0.92);
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #e2e8f0;
+        font-size: 11px;
+        direction: rtl;
+        border: 1px solid #2d2d4a;
+      }
+      .overlay-control label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        margin-bottom: 4px;
+      }
+      .overlay-control input[type="checkbox"] {
+        accent-color: #f97316;
+      }
+
+      /* Canvas chart container */
+      .chart-canvas-wrap {
+        background: #222244;
+        border: 1px solid #2d2d4a;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 8px;
+      }
+      .chart-canvas-wrap canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
     </style>
   </head>
   <body>
@@ -658,16 +857,33 @@
       <div id="side-panel">
         <div id="panel-header">
           <div class="hdr-title">ארכיון בלוק תשבי-ששון</div>
+          <a
+            href="dashboard.html"
+            style="
+              display: inline-block;
+              margin: 4px 0;
+              padding: 4px 12px;
+              background: #fbbf24;
+              color: #1a1a2e;
+              border-radius: 4px;
+              text-decoration: none;
+              font-size: 12px;
+              font-weight: 600;
+            "
+            >&#x1F4CA; דף נתונים מאוחד</a
+          >
           <div class="hdr-sub" id="header-sub"></div>
           <div class="stats-bar" id="stats-bar"></div>
         </div>
         <div id="tabs">
           <div class="tab active" data-tab="search">חיפוש</div>
           <div class="tab" data-tab="timeline">ציר זמן</div>
+          <div class="tab" data-tab="anomalies">אנומליות</div>
           <div class="tab" data-tab="stats">סטטיסטיקה</div>
         </div>
         <div id="tab-search" class="tab-content active"></div>
         <div id="tab-timeline" class="tab-content"></div>
+        <div id="tab-anomalies" class="tab-content"></div>
         <div id="tab-stats" class="tab-content"></div>
       </div>
       <div id="map"></div>
@@ -678,14 +894,29 @@
          DATA + STATE
          ══════════════════════════════════════════════════════ */
       let DATA = null;
+      let ANOMALY_RANKING = null;
+      let ANOMALY_SYNTHESIS = null;
+      let GIS_CROSSREF = null;
+      let PEOPLE_NETWORK = null;
+
       let map, parcelLayer, buildingLayer;
+      let dangerousLayer = null,
+        zoningGapLayer = null;
       let activeParcelFilter = null;
       let activeTypeFilter = "";
       let searchText = "";
       let yearMin = 1950,
         yearMax = 2026;
       let selectedBuildingLayer = null;
-      let activeBuildingFilter = null; // { building, folderIndices }
+      let activeBuildingFilter = null;
+      let anomalyMode = true; // heat coloring on by default
+      let anomalyCategoryFilter = "";
+      let anomalyOnlyFlag = false; // toggle: show only score > 40
+
+      // Anomaly score → address lookup (built after data loads)
+      let anomalyByAddress = {};
+      let anomalyByBuilding = {};
+      let findingsByAddress = {};
 
       const TYPE_COLORS = {
         permit: "#3b82f6",
@@ -702,6 +933,34 @@
         mixed: "מעורב",
         none: "ללא מסמכים",
       };
+
+      const ANOMALY_CATEGORIES = {
+        physical_anomaly: "פיזי",
+        documentary_anomaly: "תיעודי",
+        network_anomaly: "רשת",
+        zoning_gap: "ייעוד",
+        compound_anomaly: "מורכב",
+        dangerous_vs_archive: "סכנה",
+        demolition_without_danger: "הריסה",
+        conservation_gap: "שימור",
+        planning_pattern: "תכנון",
+      };
+
+      const ANOMALY_FILTER_MAP = {
+        physical: ["physical_anomaly"],
+        documentary: ["documentary_anomaly"],
+        network: ["network_anomaly"],
+        zoning: ["zoning_gap"],
+        economic: ["compound_anomaly", "demolition_without_danger"],
+      };
+
+      function getAnomalyColor(score) {
+        if (score >= 80) return "#991b1b"; // dark red
+        if (score >= 60) return "#dc2626"; // red
+        if (score >= 40) return "#f97316"; // orange
+        if (score >= 20) return "#eab308"; // yellow
+        return "#6b7280"; // gray
+      }
 
       function getBadgeClass(type) {
         if (["היתר", "בקשה", "תוכנית"].includes(type)) return "badge-permit";
@@ -721,13 +980,42 @@
          INIT
          ══════════════════════════════════════════════════════ */
       async function init() {
-        const resp = await fetch("./archive/map-data.json");
-        DATA = await resp.json();
+        const [respData, respAnomaly, respSynthesis, respGis, respPeople] =
+          await Promise.all([
+            fetch("./data/map-data.json"),
+            fetch("./data/anomaly-ranking.json"),
+            fetch("./data/anomaly-synthesis.json"),
+            fetch("./data/gis-crossref.json"),
+            fetch("./data/people-network.json"),
+          ]);
+
+        DATA = await respData.json();
+        ANOMALY_RANKING = await respAnomaly.json();
+        ANOMALY_SYNTHESIS = await respSynthesis.json();
+        GIS_CROSSREF = await respGis.json();
+        PEOPLE_NETWORK = await respPeople.json();
+
+        // Build anomaly lookup by address
+        (ANOMALY_RANKING.all_ranked || []).forEach((a) => {
+          anomalyByAddress[a.address] = a;
+        });
+
+        // Build findings lookup by address
+        (ANOMALY_SYNTHESIS.findings || []).forEach((f) => {
+          if (!findingsByAddress[f.address]) findingsByAddress[f.address] = [];
+          findingsByAddress[f.address].push(f);
+        });
+
+        // Match anomalies to buildings by address
+        DATA.buildings.forEach((b) => {
+          if (b.address && anomalyByAddress[b.address]) {
+            anomalyByBuilding[b.id] = anomalyByAddress[b.address];
+          }
+        });
 
         document.getElementById("header-sub").textContent =
           `גוש 6135 | ${DATA.meta.total_documents.toLocaleString()} מסמכים | ${DATA.meta.total_folders} תיקים`;
 
-        // Stats bar
         const parcelsWithDocs = DATA.parcels.filter(
           (p) => p.doc_count > 0,
         ).length;
@@ -741,6 +1029,7 @@
         initTabs();
         buildSearchTab();
         buildTimelineTab();
+        buildAnomalyTab();
         buildStatsTab();
       }
 
@@ -812,25 +1101,15 @@
             })),
           },
           {
-            style: (feature) => {
-              const b = feature.properties;
-              const hasData = b.doc_count > 0;
-              return {
-                color: hasData ? "#3b82f6" : "#4b5563",
-                weight: hasData ? 1.5 : 0.5,
-                fillColor: hasData ? "#3b82f6" : "#374151",
-                fillOpacity: hasData
-                  ? 0.15 + Math.min(b.doc_count / 200, 0.4)
-                  : 0.04,
-              };
-            },
+            style: (feature) => getBuildingStyle(feature.properties),
             onEachFeature: (feature, layer) => {
               const b = feature.properties;
-              // Tooltip: address | floors | year
               const parts = [];
               if (b.address) parts.push(b.address);
               if (b.floors) parts.push(`${b.floors} קומות`);
               if (b.year) parts.push(String(b.year));
+              const anom = anomalyByBuilding[b.id];
+              if (anom) parts.push(`ציון: ${anom.composite_score}`);
               if (parts.length > 0) {
                 layer.bindTooltip(parts.join(" | "), {
                   sticky: true,
@@ -839,8 +1118,10 @@
                   className: "building-tooltip",
                 });
               }
-              // Click: show matched folders, fallback to parcel folders
               layer.on("click", () => {
+                if (anomalyByBuilding[b.id]) {
+                  showAnomalyPopup(b, layer);
+                }
                 const hasFolders =
                   b.matched_folders && b.matched_folders.length > 0;
                 if (hasFolders) {
@@ -848,7 +1129,6 @@
                 } else if (b.doc_count > 0) {
                   showParcelFolders(b.parcel);
                 } else {
-                  // No docs — show empty state with highlight
                   showBuildingFolders(b);
                 }
               });
@@ -856,19 +1136,223 @@
           },
         ).addTo(map);
 
+        // Add overlay layers
+        addDangerousLayer();
+        addZoningGapLayer();
+
         // Legend
+        addLegend();
+
+        // Overlay control
+        addOverlayControl();
+      }
+
+      function getBuildingStyle(b) {
+        const anom = anomalyByBuilding[b.id];
+        if (anomalyMode && anom) {
+          const score = anom.composite_score;
+          const color = getAnomalyColor(score);
+          return {
+            color: color,
+            weight: 2,
+            fillColor: color,
+            fillOpacity: 0.25 + (score / 100) * 0.45,
+          };
+        }
+        const hasData = b.doc_count > 0;
+        return {
+          color: hasData ? "#3b82f6" : "#4b5563",
+          weight: hasData ? 1.5 : 0.5,
+          fillColor: hasData ? "#3b82f6" : "#374151",
+          fillOpacity: hasData ? 0.15 + Math.min(b.doc_count / 200, 0.4) : 0.04,
+        };
+      }
+
+      function refreshBuildingStyles() {
+        if (!buildingLayer) return;
+        buildingLayer.eachLayer((layer) => {
+          const b = layer.feature.properties;
+          layer.setStyle(getBuildingStyle(b));
+        });
+      }
+
+      function showAnomalyPopup(b, layer) {
+        const anom = anomalyByBuilding[b.id];
+        if (!anom) return;
+        const findings = findingsByAddress[b.address] || [];
+        const color = getAnomalyColor(anom.composite_score);
+
+        // Group findings by category
+        const byCategory = {};
+        findings.forEach((f) => {
+          const cat = ANOMALY_CATEGORIES[f.category] || f.category;
+          if (!byCategory[cat]) byCategory[cat] = [];
+          byCategory[cat].push(f);
+        });
+
+        // Key people for this address
+        const addrPeople = PEOPLE_NETWORK.addresses
+          ? PEOPLE_NETWORK.addresses.find((a) => a.address === b.address)
+          : null;
+        const topPeople = addrPeople
+          ? addrPeople.people.slice(0, 5).join(", ")
+          : "";
+
+        let html = `<div class="anomaly-popup">`;
+        html += `<h4>${b.address || "בניין " + b.id}</h4>`;
+        html += `<div class="score-badge" style="background:${color}">ציון: ${anom.composite_score}</div>`;
+
+        if (Object.keys(byCategory).length > 0) {
+          html += `<ul>`;
+          for (const [cat, items] of Object.entries(byCategory)) {
+            html += `<li><strong>${cat}</strong> (${items.length}): ${items[0].description.substring(0, 80)}${items[0].description.length > 80 ? "..." : ""}</li>`;
+          }
+          html += `</ul>`;
+        }
+
+        if (anom.flags && anom.flags.length > 0) {
+          html += `<div style="margin-top:4px;font-size:10px;color:#f97316">${anom.flags.join(" | ")}</div>`;
+        }
+
+        if (topPeople) {
+          html += `<div class="people-list">שחקנים: ${topPeople}</div>`;
+        }
+        html += `</div>`;
+
+        layer.bindPopup(html, { maxWidth: 300 }).openPopup();
+      }
+
+      function addDangerousLayer() {
+        if (!GIS_CROSSREF.dangerous_vs_buildings) return;
+        const features = GIS_CROSSREF.dangerous_vs_buildings
+          .map((d) => {
+            // Find nearest building geometry
+            const building = DATA.buildings.find(
+              (b) => b.id === d.nearest_building_id,
+            );
+            if (!building || !building.geometry) return null;
+            return {
+              type: "Feature",
+              geometry: building.geometry,
+              properties: d,
+            };
+          })
+          .filter(Boolean);
+
+        dangerousLayer = L.geoJSON(
+          { type: "FeatureCollection", features },
+          {
+            style: {
+              color: "#ef4444",
+              weight: 3,
+              dashArray: "8 4",
+              fillColor: "transparent",
+              fillOpacity: 0,
+            },
+            onEachFeature: (feature, layer) => {
+              const d = feature.properties;
+              layer.bindTooltip(
+                `מבנה מסוכן (591): ${d.address}<br>${d.order_type}`,
+                {
+                  sticky: true,
+                  direction: "top",
+                  className: "building-tooltip",
+                },
+              );
+            },
+          },
+        );
+        // Added to map by default
+        dangerousLayer.addTo(map);
+      }
+
+      function addZoningGapLayer() {
+        if (!GIS_CROSSREF.zoning_per_parcel) return;
+        // Find parcels with mixed zoning (potential gaps)
+        const mixedParcels = GIS_CROSSREF.zoning_per_parcel.filter(
+          (z) => z.zoning && z.zoning.length > 1,
+        );
+
+        const features = mixedParcels
+          .map((z) => {
+            const parcel = DATA.parcels.find(
+              (p) => p.chelka === z.chelka || p.chelka === String(z.chelka),
+            );
+            if (!parcel || !parcel.geometry) return null;
+            return {
+              type: "Feature",
+              geometry: parcel.geometry,
+              properties: {
+                chelka: z.chelka,
+                zonings: z.zoning.map((x) => x.yeud_name).join(", "),
+              },
+            };
+          })
+          .filter(Boolean);
+
+        if (features.length === 0) return;
+
+        zoningGapLayer = L.geoJSON(
+          { type: "FeatureCollection", features },
+          {
+            style: {
+              color: "#a855f7",
+              weight: 2,
+              fillColor: "#a855f7",
+              fillOpacity: 0.1,
+              dashArray: "4 4 1 4",
+            },
+            onEachFeature: (feature, layer) => {
+              const p = feature.properties;
+              layer.bindTooltip(
+                `חלקה ${p.chelka}: ייעוד מעורב — ${p.zonings}`,
+                {
+                  sticky: true,
+                  direction: "top",
+                  className: "building-tooltip",
+                },
+              );
+            },
+          },
+        );
+        zoningGapLayer.addTo(map);
+      }
+
+      function addLegend() {
         const legend = L.control({ position: "bottomleft" });
         legend.onAdd = function () {
           const div = L.DomUtil.create("div", "map-legend");
           div.innerHTML = `
-            <div style="font-weight:600;margin-bottom:4px;">בניינים</div>
+            <div style="font-weight:600;margin-bottom:4px;">ציון אנומליה</div>
             <div class="legend-item">
-              <div class="legend-swatch" style="background:#3b82f6"></div>
-              עם מסמכים בארכיון
+              <div class="legend-swatch" style="background:#991b1b"></div>
+              80-100 קריטי
             </div>
             <div class="legend-item">
-              <div class="legend-swatch" style="background:#374151;opacity:0.3"></div>
-              ללא מסמכים
+              <div class="legend-swatch" style="background:#dc2626"></div>
+              60-80 גבוה
+            </div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:#f97316"></div>
+              40-60 בינוני
+            </div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:#eab308"></div>
+              20-40 נמוך
+            </div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:#6b7280"></div>
+              0-20 תקין
+            </div>
+            <div class="legend-divider"></div>
+            <div style="font-weight:600;margin-bottom:4px;">שכבות</div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:transparent;border:2px dashed #ef4444"></div>
+              מבנה מסוכן (591)
+            </div>
+            <div class="legend-item">
+              <div class="legend-swatch" style="background:rgba(168,85,247,0.15);border:1px dashed #a855f7"></div>
+              ייעוד מעורב
             </div>
           `;
           return div;
@@ -876,10 +1360,46 @@
         legend.addTo(map);
       }
 
+      function addOverlayControl() {
+        const ctrl = L.control({ position: "topright" });
+        ctrl.onAdd = function () {
+          const div = L.DomUtil.create("div", "overlay-control");
+          div.innerHTML = `
+            <div style="font-weight:600;margin-bottom:6px;">שכבות</div>
+            <label><input type="checkbox" id="chk-anomaly" checked> צביעת אנומליות</label>
+            <label><input type="checkbox" id="chk-dangerous" checked> מבנים מסוכנים</label>
+            <label><input type="checkbox" id="chk-zoning" checked> ייעוד מעורב</label>
+          `;
+          L.DomEvent.disableClickPropagation(div);
+          return div;
+        };
+        ctrl.addTo(map);
+
+        // Wait for DOM then attach listeners
+        setTimeout(() => {
+          document
+            .getElementById("chk-anomaly")
+            ?.addEventListener("change", (e) => {
+              anomalyMode = e.target.checked;
+              refreshBuildingStyles();
+            });
+          document
+            .getElementById("chk-dangerous")
+            ?.addEventListener("change", (e) => {
+              if (e.target.checked && dangerousLayer) dangerousLayer.addTo(map);
+              else if (dangerousLayer) map.removeLayer(dangerousLayer);
+            });
+          document
+            .getElementById("chk-zoning")
+            ?.addEventListener("change", (e) => {
+              if (e.target.checked && zoningGapLayer) zoningGapLayer.addTo(map);
+              else if (zoningGapLayer) map.removeLayer(zoningGapLayer);
+            });
+        }, 100);
+      }
+
       function showParcelFolders(chelka) {
-        // Switch to search tab, filter by parcel
         switchTab("search");
-        // Clear other filters, set parcel
         document
           .querySelectorAll(".parcel-btn")
           .forEach((btn) => btn.classList.remove("active"));
@@ -898,29 +1418,20 @@
 
       function showBuildingFolders(b) {
         switchTab("search");
-        // Reset parcel filter
         document
           .querySelectorAll(".parcel-btn")
           .forEach((btn) => btn.classList.remove("active"));
         activeParcelFilter = null;
-
-        // Highlight clicked building on map
         highlightBuilding(b);
-
-        // Set building filter
         activeBuildingFilter = {
           building: b,
           folderIndices: b.matched_folders || [],
         };
-
         applyFilters();
       }
 
       function highlightBuilding(b) {
-        // Remove previous highlight
         clearBuildingHighlight();
-
-        // Find the building geometry and add a highlight layer
         if (b.geometry) {
           selectedBuildingLayer = L.geoJSON(b.geometry, {
             style: {
@@ -973,7 +1484,6 @@
       function buildSearchTab() {
         const container = document.getElementById("tab-search");
 
-        // Get all unique doc types
         const allTypes = new Set();
         DATA.folders.forEach((f) =>
           Object.keys(f.doc_types).forEach((t) => allTypes.add(t)),
@@ -1015,7 +1525,6 @@
           <div id="folder-results"></div>
         `;
 
-        // Event listeners
         document
           .getElementById("search-input")
           .addEventListener("input", (e) => {
@@ -1077,21 +1586,15 @@
       function applyFilters() {
         let results;
 
-        // Building filter overrides other filters
         if (activeBuildingFilter) {
           const matchedIndices = new Set(activeBuildingFilter.folderIndices);
           results = DATA.folders.filter((_, i) => matchedIndices.has(i));
         } else {
           results = DATA.folders.filter((f) => {
-            // Parcel filter
             if (activeParcelFilter && f.parcel !== activeParcelFilter)
               return false;
-
-            // Type filter
             if (activeTypeFilter && !f.doc_types[activeTypeFilter])
               return false;
-
-            // Year filter
             if (f.date_range) {
               const parts = f.date_range.split("–");
               if (parts.length === 2) {
@@ -1100,8 +1603,6 @@
                 if (fEnd < yearMin || fStart > yearMax) return false;
               }
             }
-
-            // Text search
             if (searchText) {
               const q = searchText.toLowerCase();
               const haystack = [
@@ -1115,7 +1616,6 @@
                 .toLowerCase();
               if (!haystack.includes(q)) return false;
             }
-
             return true;
           });
         }
@@ -1134,7 +1634,6 @@
               </div>
               <button class="building-filter-clear" onclick="clearBuildingFilter()">הצג הכל</button>
             </div>`;
-
           document.getElementById("result-count").textContent =
             `${results.length} תיקים לבניין זה`;
         } else {
@@ -1162,7 +1661,6 @@
             .map((f) => renderFolderCard(f))
             .join("");
 
-        // Attach expand listeners
         container.querySelectorAll(".folder-card-header").forEach((hdr) => {
           hdr.addEventListener("click", () => {
             hdr.closest(".folder-card").classList.toggle("expanded");
@@ -1249,7 +1747,150 @@
       }
 
       /* ══════════════════════════════════════════════════════
-         TAB 3: STATS
+         TAB 3: ANOMALIES
+         ══════════════════════════════════════════════════════ */
+      function buildAnomalyTab() {
+        const container = document.getElementById("tab-anomalies");
+
+        const summary = ANOMALY_SYNTHESIS.summary || {};
+        const totalFindings = summary.total_findings || 0;
+        const byCat = summary.by_category || {};
+
+        container.innerHTML = `
+          <div style="margin-bottom:12px;">
+            <div style="font-size:13px;font-weight:600;color:#f1f5f9;margin-bottom:4px;">
+              ${totalFindings} ממצאי אנומליה | ${ANOMALY_RANKING.total_addresses || 0} כתובות
+            </div>
+            <div style="font-size:11px;color:#94a3b8;">
+              סכנה: ${byCat.dangerous_vs_archive || 0} |
+              פיזי: ${byCat.physical_anomaly || 0} |
+              תיעודי: ${byCat.documentary_anomaly || 0} |
+              רשת: ${byCat.network_anomaly || 0} |
+              ייעוד: ${byCat.zoning_gap || 0} |
+              מורכב: ${byCat.compound_anomaly || 0}
+            </div>
+          </div>
+
+          <div class="anomaly-filter-row">
+            <button class="anomaly-filter-btn active" data-acat="">הכל</button>
+            <button class="anomaly-filter-btn" data-acat="physical">פיזי</button>
+            <button class="anomaly-filter-btn" data-acat="documentary">תיעודי</button>
+            <button class="anomaly-filter-btn" data-acat="network">רשת</button>
+            <button class="anomaly-filter-btn" data-acat="zoning">ייעוד</button>
+            <button class="anomaly-filter-btn" data-acat="economic">כלכלי</button>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-switch" id="anomaly-only-toggle"></div>
+            <span>הצג רק אנומליות (ציון > 40)</span>
+          </div>
+
+          <div class="result-count" id="anomaly-result-count"></div>
+          <div id="anomaly-list"></div>
+        `;
+
+        // Filter buttons
+        container.querySelectorAll(".anomaly-filter-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            container
+              .querySelectorAll(".anomaly-filter-btn")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            anomalyCategoryFilter = btn.dataset.acat;
+            renderAnomalyList();
+          });
+        });
+
+        // Toggle
+        document
+          .getElementById("anomaly-only-toggle")
+          .addEventListener("click", function () {
+            anomalyOnlyFlag = !anomalyOnlyFlag;
+            this.classList.toggle("on", anomalyOnlyFlag);
+            renderAnomalyList();
+          });
+
+        renderAnomalyList();
+      }
+
+      function renderAnomalyList() {
+        let items = ANOMALY_RANKING.all_ranked || [];
+
+        // Filter by score threshold
+        if (anomalyOnlyFlag) {
+          items = items.filter((a) => a.composite_score > 40);
+        }
+
+        // Filter by category — check if address has findings of that type
+        if (anomalyCategoryFilter) {
+          const cats = ANOMALY_FILTER_MAP[anomalyCategoryFilter] || [];
+          items = items.filter((a) => {
+            const findings = findingsByAddress[a.address] || [];
+            return findings.some((f) => cats.includes(f.category));
+          });
+        }
+
+        // Sort by composite score desc
+        items = items.sort((a, b) => b.composite_score - a.composite_score);
+
+        const countEl = document.getElementById("anomaly-result-count");
+        countEl.textContent = `${items.length} כתובות`;
+
+        const listEl = document.getElementById("anomaly-list");
+
+        // Show top items (all ranked or filtered)
+        const display = items.slice(0, 50);
+
+        listEl.innerHTML = display
+          .map((a, i) => {
+            const color = getAnomalyColor(a.composite_score);
+            const findings = findingsByAddress[a.address] || [];
+            // Get top finding description
+            const topFinding = findings.length > 0 ? findings[0] : null;
+            const desc = topFinding
+              ? topFinding.description.substring(0, 100) +
+                (topFinding.description.length > 100 ? "..." : "")
+              : a.flags
+                ? a.flags.join(", ")
+                : "";
+
+            // Category badges from findings
+            const cats = [
+              ...new Set(
+                findings.map(
+                  (f) => ANOMALY_CATEGORIES[f.category] || f.category,
+                ),
+              ),
+            ].slice(0, 4);
+
+            return `
+            <div class="anomaly-rank-card" data-address="${a.address}" onclick="zoomToAddress('${a.address.replace(/'/g, "\\'")}')">
+              <div class="anomaly-rank-header">
+                <span class="anomaly-rank-num">${i + 1}</span>
+                <span class="anomaly-rank-addr">${a.address}</span>
+                <span class="anomaly-rank-score" style="background:${color}">${a.composite_score}</span>
+              </div>
+              <div class="anomaly-rank-desc">${desc}</div>
+              <div class="anomaly-rank-flags">
+                ${cats.map((c) => `<span class="anomaly-flag">${c}</span>`).join("")}
+                ${a.danger_status > 0 ? '<span class="anomaly-flag" style="background:#5f1e1e;color:#fca5a5">מסוכן</span>' : ""}
+              </div>
+            </div>`;
+          })
+          .join("");
+      }
+
+      function zoomToAddress(address) {
+        // Find building by address and zoom to it
+        const building = DATA.buildings.find((b) => b.address === address);
+        if (building && building.centroid) {
+          map.setView([building.centroid[1], building.centroid[0]], 19);
+          highlightBuilding(building);
+        }
+      }
+
+      /* ══════════════════════════════════════════════════════
+         TAB 4: STATS
          ══════════════════════════════════════════════════════ */
       function buildStatsTab() {
         const container = document.getElementById("tab-stats");
@@ -1258,8 +1899,7 @@
 
         // ── Key findings ──
         html += `<div class="stats-section"><h3>ממצאים מרכזיים</h3>`;
-        const emojis = ["🔍", "⚠️", "📊", "🏢", "👤"];
-        a.key_findings.forEach((f, i) => {
+        a.key_findings.forEach((f) => {
           const emoji =
             f.includes("פער") || f.includes("בלתי חוקית")
               ? "⚠️"
@@ -1272,7 +1912,17 @@
         });
         html += `</div>`;
 
-        // ── Demolition by year ──
+        // ── Coverage ratio histogram ──
+        html += `<div class="stats-section"><h3>כיסוי בניינים לפי חלקה (%)</h3>`;
+        html += buildCoverageHistogram();
+        html += `</div>`;
+
+        // ── Documents per address (horizontal bar) ──
+        html += `<div class="stats-section"><h3>מסמכים לפי כתובת (Top 15)</h3>`;
+        html += buildDocsPerAddressChart();
+        html += `</div>`;
+
+        // ── Demolition by year (with 90s highlight) ──
         html += `<div class="stats-section"><h3>צווי הריסה לפי שנה</h3>`;
         const demoYears = Object.entries(a.demolition_by_year)
           .map(([y, c]) => [parseInt(y), c])
@@ -1293,9 +1943,9 @@
             </div>`;
         });
         html += `</div>`;
-        html += `<div class="note">שנות ה-90 מודגשות באדום</div></div>`;
+        html += `<div class="note">שנות ה-90 מודגשות באדום — שיא צווי הריסה מתלכד עם תב"ע 2215</div></div>`;
 
-        // ── Permits vs completions ──
+        // ── Permit vs completion gap (dual bars per street) ──
         html += `<div class="stats-section"><h3>היתרים מול תעודות גמר</h3>`;
         const pvEntries = Object.entries(a.permits_vs_completions);
         const maxPV = Math.max(
@@ -1335,16 +1985,13 @@
           ...new Set(Object.values(heatData).flatMap((d) => Object.keys(d))),
         ].sort();
         const parcels = Object.keys(heatData).sort();
-        const cols = allDecades.length + 1;
 
         html += `<div class="heatmap-grid" style="grid-template-columns: 70px repeat(${allDecades.length}, 1fr)">`;
-        // Header row
         html += `<div class="heatmap-header">חלקה</div>`;
         allDecades.forEach(
           (d) => (html += `<div class="heatmap-header">${d}</div>`),
         );
 
-        // Data rows
         const allVals = Object.values(heatData).flatMap((d) =>
           Object.values(d),
         );
@@ -1377,6 +2024,11 @@
             .join("")}
         </table></div>`;
 
+        // ── Top 5 people by network centrality ──
+        html += `<div class="stats-section"><h3>שחקנים מרכזיים ברשת</h3>`;
+        html += buildPeopleCentralityChart();
+        html += `</div>`;
+
         // ── Cross parcel owners ──
         html += `<div class="stats-section"><h3>בעלים ביותר מחלקה אחת</h3>`;
         const owners = a.cross_parcel_owners.slice(0, 20);
@@ -1391,6 +2043,136 @@
         </table></div>`;
 
         container.innerHTML = html;
+      }
+
+      /* ── New stats chart builders ── */
+
+      function buildCoverageHistogram() {
+        // Buildings per parcel, as coverage % of parcel area
+        const parcelBuildings = {};
+        DATA.buildings.forEach((b) => {
+          if (!b.parcel) return;
+          if (!parcelBuildings[b.parcel]) parcelBuildings[b.parcel] = 0;
+          parcelBuildings[b.parcel]++;
+        });
+
+        const buckets = {
+          "0-20%": 0,
+          "20-40%": 0,
+          "40-60%": 0,
+          "60-80%": 0,
+          "80-100%": 0,
+        };
+        DATA.parcels.forEach((p) => {
+          const buildingCount = parcelBuildings[p.chelka] || 0;
+          // Estimate coverage: buildings / max_buildings_per_parcel * 100
+          const maxBuildings = Math.max(...Object.values(parcelBuildings), 1);
+          const pct = (buildingCount / maxBuildings) * 100;
+          if (pct <= 20) buckets["0-20%"]++;
+          else if (pct <= 40) buckets["20-40%"]++;
+          else if (pct <= 60) buckets["40-60%"]++;
+          else if (pct <= 80) buckets["60-80%"]++;
+          else buckets["80-100%"]++;
+        });
+
+        const maxBucket = Math.max(...Object.values(buckets), 1);
+        let html = `<div class="bar-chart">`;
+        const colors = ["blue", "blue", "yellow", "orange", "red"];
+        Object.entries(buckets).forEach(([label, count], i) => {
+          const pct = (count / maxBucket) * 100;
+          html += `
+            <div class="bar-row">
+              <span class="bar-label" style="min-width:50px">${label}</span>
+              <div class="bar-track">
+                <div class="bar-fill ${colors[i]}" style="width:${pct}%"></div>
+              </div>
+              <span class="bar-value">${count} חלקות</span>
+            </div>`;
+        });
+        html += `</div>`;
+        html += `<div class="note">מספר חלקות לפי יחס כיסוי בנוי</div>`;
+        return html;
+      }
+
+      function buildDocsPerAddressChart() {
+        // Aggregate docs per address from folders
+        const addrDocs = {};
+        DATA.folders.forEach((f) => {
+          const addr = f.primary_address || "לא ידוע";
+          addrDocs[addr] = (addrDocs[addr] || 0) + f.doc_count;
+        });
+
+        const sorted = Object.entries(addrDocs)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 15);
+
+        const maxDocs = sorted.length > 0 ? sorted[0][1] : 1;
+        let html = `<div class="bar-chart">`;
+        sorted.forEach(([addr, count]) => {
+          const pct = (count / maxDocs) * 100;
+          html += `
+            <div class="bar-row">
+              <span class="bar-label" style="min-width:80px;font-size:10px">${addr}</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width:${pct}%"></div>
+              </div>
+              <span class="bar-value">${count}</span>
+            </div>`;
+        });
+        html += `</div>`;
+        return html;
+      }
+
+      function buildPeopleCentralityChart() {
+        if (!PEOPLE_NETWORK || !PEOPLE_NETWORK.people) return "";
+
+        // Use crossParcelCount * appearances as centrality proxy
+        const people = PEOPLE_NETWORK.people
+          .filter((p) => !p.isInstitutional)
+          .map((p) => ({
+            name: p.name,
+            centrality: p.crossParcelCount * p.appearances,
+            appearances: p.appearances,
+            parcels: p.crossParcelCount,
+            isArchitect: p.isArchitect,
+            isRepeatDanger: p.isRepeatDanger,
+          }))
+          .sort((a, b) => b.centrality - a.centrality)
+          .slice(0, 10);
+
+        if (people.length === 0) return "<p>אין נתונים</p>";
+
+        const maxC = people[0].centrality;
+        let html = `<div class="bar-chart">`;
+        people.forEach((p) => {
+          const pct = (p.centrality / maxC) * 100;
+          const color = p.isRepeatDanger
+            ? "red"
+            : p.isArchitect
+              ? "blue"
+              : "green";
+          const tag = p.isArchitect
+            ? " (אדריכל)"
+            : p.isRepeatDanger
+              ? " (סכנה חוזרת)"
+              : "";
+          html += `
+            <div class="bar-row">
+              <span class="bar-label" style="min-width:90px;font-size:10px">${p.name}${tag}</span>
+              <div class="bar-track">
+                <div class="bar-fill ${color}" style="width:${pct}%"></div>
+              </div>
+              <span class="bar-value" style="min-width:60px">${p.appearances} הופעות</span>
+            </div>`;
+        });
+        html += `</div>`;
+        html += `<div class="note" style="margin-top:4px">
+          <span style="color:#3b82f6">■</span> אדריכל
+          &nbsp;<span style="color:#ef4444">■</span> סכנה חוזרת
+          &nbsp;<span style="color:#22c55e">■</span> אחר
+          &nbsp;— מיון לפי: הופעות × חלקות
+        </div>`;
+        return html;
       }
 
       /* ══════════════════════════════════════════════════════
