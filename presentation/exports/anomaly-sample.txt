@@ -1,0 +1,50 @@
+﻿{
+  "generated": "2026-04-11",
+  "block": {
+    "name": "בלוק תשבי-ששון",
+    "neighborhood": "שכונת התקווה",
+    "gush": 6135,
+    "parcels": [43, 44, 71, 110],
+    "bbox_wgs84": {
+      "south": 32.04751735235951,
+      "west": 34.79192094803726,
+      "north": 32.05128645397932,
+      "east": 34.79280041217178
+    },
+    "total_buildings": 56,
+    "total_area_sqm": 19567,
+    "total_addresses": 78,
+    "governing_plan": "תא/2215 (1992)",
+    "generated": "2026-04-04T11:01:25.471Z"
+  },
+  "summary": {
+    "total_addresses": 78,
+    "total_findings": 332,
+    "by_category": {
+      "dangerous_vs_archive": 6,
+      "zoning_gap": 7,
+      "physical_anomaly": 42,
+      "documentary_anomaly": 61,
+      "network_anomaly": 120,
+      "compound_anomaly": 28,
+      "demolition_without_danger": 66,
+      "conservation_gap": 1,
+      "planning_pattern": 1
+    },
+    "by_severity": {
+      "high": 80,
+      "medium": 217,
+      "low": 33,
+      "critical": 1,
+      "info": 1
+    },
+    "archive_docs_matched": 4658,
+    "cross_parcel_actors": 362,
+    "dangerous_gis": 6,
+    "conservation_buildings": 0,
+    "building_stats": {
+      "year": {
+        "median": 1949,
+        "mean": 1956.2957746478874,
+        "std": 21.76985534781317
+      },

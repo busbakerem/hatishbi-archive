@@ -1,0 +1,17 @@
+hatishbi-archive/
+├── docs/   ← 3,787 PDFs · 928 MB
+│
+└── data/
+    ├── people-network.json              3.3M
+    ├── map-data.json                    2.7M
+    ├── statistical-areas-tlv.geojson    1.1M
+    ├── buildings.geojson                1.0M
+    ├── cbs-stat-areas.7z                891K
+    ├── anomaly-synthesis-clean.json     402K
+    ├── anomaly-synthesis.json           392K
+    ├── gis-crossref.json                 52K
+    ├── anomaly-ranking-clean.json        48K
+    ├── anomaly-ranking.json              32K
+    ├── parcels.geojson                   25K
+    ├── statistical-areas-block.geojson   12K
+    └── datagov-demographics.json        2.7K
