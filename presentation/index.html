@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
@@ -18,16 +18,57 @@
         height: 100vh;
         object-fit: contain;
         display: block;
+        cursor: pointer;
+      }
+      #pause-indicator {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px;
+        color: rgba(255, 255, 255, 0.85);
+        font-family: sans-serif;
+        font-weight: bold;
+        letter-spacing: 8px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.25s;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+      }
+      #pause-indicator.visible {
+        opacity: 1;
       }
     </style>
   </head>
   <body>
     <video
+      id="v"
       src="./exports/json-scroll.mp4"
       autoplay
       loop
       muted
       playsinline
     ></video>
+    <div id="pause-indicator">▌▌</div>
+    <script>
+      const v = document.getElementById("v");
+      const ind = document.getElementById("pause-indicator");
+      function toggle() {
+        if (v.paused) {
+          v.play();
+          ind.classList.remove("visible");
+        } else {
+          v.pause();
+          ind.classList.add("visible");
+        }
+      }
+      v.addEventListener("click", toggle);
+      document.addEventListener("keydown", (e) => {
+        if (e.code === "Space" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    </script>
   </body>
 </html>
